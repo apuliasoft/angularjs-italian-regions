@@ -1,0 +1,26 @@
+<html ng-app="regionsApp">
+
+	<head>
+		<script src="angular.min.js"></script>
+		<script src="app.js"></script>
+	</head>
+	
+	<body>
+        <div ng-controller="regionsCtrl">
+            <detail region="currentRegion"></detail>
+            <input ng-model="search">
+            <table>
+                <tr>
+                    <th>Regione</th>
+                    <th>Capoluogo</th>
+                </tr>
+                <tr ng-repeat="region in regions | orderBy:'regione' | filter:search">
+                    <td>{{ region.regione }}</td>
+                    <td>{{ region.capoluogo | capitalize }}</td>
+                    <td><button ng-click="setCurrentRegion(region)">info</button></td>
+                </tr>
+            </table>
+        </div>
+	</body>
+	
+</html>
